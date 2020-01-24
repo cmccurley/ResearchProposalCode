@@ -102,10 +102,10 @@ if __name__ == "__main__":
 
         ## These will control the make value in feature 3 (which is important
         ## for controlling visualization when increasing steepness)
-        f0_min = -2
-        f0_max = 2
-        f1_min = -2
-        f1_max = 2
+        f0_min = -0.5
+        f0_max = 0.5
+        f1_min = -0.5
+        f1_max = 0.5
         samples_f1 = samplegrid(f0_min, f0_max, f1_min, f1_max, num_c1)
 
         ## Generate Class 0 manifold
@@ -123,7 +123,7 @@ if __name__ == "__main__":
         X_c1[:,2] = X_c1[:,2]
 
         ## Plot manifolds
-        plot_3D_manifolds(X_c0, X_c1, 'Non-Linearly Separable Quadradic Surfaces')
+        plot_3D_manifolds(X_c0, X_c1, 'Overlapping Quadradic Surfaces')
 
     # elif (manifold_type == 's_curves'):
     #     ## S-curve data set

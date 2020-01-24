@@ -57,10 +57,10 @@ class SetParams(object):
 
     ###################### Quadratic surfaces #########################
 
-    f0_min = -4
-    f0_max = 4
-    f1_min = -4
-    f1_max = 4
+    f0_min = -2
+    f0_max = 2
+    f1_min = -2
+    f1_max = 2
     f2_min = 0
     f2_max = 4
 
