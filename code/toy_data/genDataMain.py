@@ -84,28 +84,42 @@ if __name__ == "__main__":
         X_c1 = gen_quadratic_surface(f2_min, f2_max, weight_0, weight_1, samples_f1)
 
         # ## Scale the data
-        # scaler_c0 = StandardScaler()
+        # scaler_c0 = StandardScaler(with_mean=False)
         # scaler_c0.fit(X_c0)
         # X_c0 = scaler_c0.transform(X_c0)
 
-        # scaler_c1 = StandardScaler()
+        # scaler_c1 = StandardScaler(with_mean=False)
         # scaler_c1.fit(X_c1)
         # X_c1 = scaler_c1.transform(X_c1)
 
         ## Plot manifolds
         plot_3D_manifolds(X_c0, X_c1, 'Linearly Separable Quadradic Surfaces')
+        
+        
+        ## Save data
+        data = dict()
+        X = np.concatenate((X_c0,X_c1))
+        y = np.concatenate((np.zeros(num_c0),np.ones(num_c1)))
+        data["X"] = X
+        data["y"] = y
+        data["Name"] = "Quadratic Surfaces, linearly separable"
+        np.save("quad_surfaces_lin_separable", data)
 
 
     elif (manifold_type == 'quadratic_surfaces_overlap'):
         ## Generate grids of samples
+        f0_min = -4
+        f0_max = 4
+        f1_min = -4
+        f1_max = 4
         samples_f0 = samplegrid(f0_min, f0_max, f1_min, f1_max, num_c0)
 
         ## These will control the make value in feature 3 (which is important
         ## for controlling visualization when increasing steepness)
-        f0_min = -0.5
-        f0_max = 0.5
-        f1_min = -0.5
-        f1_max = 0.5
+        f0_min = -2
+        f0_max = 2
+        f1_min = -2
+        f1_max = 2
         samples_f1 = samplegrid(f0_min, f0_max, f1_min, f1_max, num_c1)
 
         ## Generate Class 0 manifold
@@ -121,9 +135,28 @@ if __name__ == "__main__":
         X_c1 = gen_quadratic_surface(f2_min, f2_max, weight_0, weight_1, samples_f1)
 
         X_c1[:,2] = X_c1[:,2]
+        
+        
+        # ## Scale the data
+        # scaler_c0 = StandardScaler(with_mean=False)
+        # scaler_c0.fit(X_c0)
+        # X_c0 = scaler_c0.transform(X_c0)
+
+        # # scaler_c1 = StandardScaler(with_mean=False)
+        # # scaler_c1.fit(X_c1)
+        # # X_c1 = scaler_c1.transform(X_c1)
 
         ## Plot manifolds
         plot_3D_manifolds(X_c0, X_c1, 'Overlapping Quadradic Surfaces')
+        
+        ## Save data
+        data = dict()
+        X = np.concatenate((X_c0,X_c1))
+        y = np.concatenate((np.zeros(num_c0),np.ones(num_c1)))
+        data["X"] = X
+        data["y"] = y
+        data["Name"] = "Quadratic Surfaces, non-separable"
+        np.save("quad_surfaces_non_separable", data)
 
     # elif (manifold_type == 's_curves'):
     #     ## S-curve data set
